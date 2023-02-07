@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import com.igor.springapi.DTO.UserDTO;
 import com.igor.springapi.domain.User;
 import com.igor.springapi.services.UserService;
 
@@ -21,13 +25,10 @@ public class UserResources {
     private UserService service;
 
     @RequestMapping(method = RequestMethod.GET) // ou @Getmapping
-    public ResponseEntity<List<User>> findAll() {
-        // User maria = new User("1", "Maria Silva", "maria@gmail.com");
-        // User alex = new User("2", "Alex Silva", "alex@gmail.com");
+    public ResponseEntity<List<UserDTO>> findAll() {
         List<User> list = service.findAll();
-        // list.addAll(Arrays.asList(maria, alex));
-
-        return ResponseEntity.ok().body(list);
+        List<UserDTO> listDto = list.stream().map(e -> new UserDTO(e)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDto);
     }
 
 }
