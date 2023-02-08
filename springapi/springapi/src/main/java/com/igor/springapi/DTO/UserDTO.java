@@ -6,7 +6,7 @@ public class UserDTO {
 
     private String id;
     private String name;
-    // private String email;
+    private String email;
 
     public UserDTO() {
     }
@@ -14,7 +14,7 @@ public class UserDTO {
     public UserDTO(User obj) {
         id = obj.getId();
         name = obj.getName();
-        // email = obj.getEmail();
+        email = obj.getEmail();
     }
 
     public String getId() {
@@ -33,12 +33,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    // public String getEmail() {
-    // return this.email;
-    // }
+    public String getEmail() {
+        return this.email;
+    }
 
-    // public void setEmail(String email) {
-    // this.email = email;
-    // }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }
