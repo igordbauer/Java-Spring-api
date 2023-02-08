@@ -54,4 +54,13 @@ public class UserResources { // UserControllers
         return ResponseEntity.created(uri).build();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT) // ou @PostMapping
+    public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
+
+        User obj = service.fromDTO(objDto);
+        obj.setId(id);
+        obj = service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
 }
