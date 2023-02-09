@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.igor.springapi.DTO.UserDTO;
+import com.igor.springapi.domain.Post;
 import com.igor.springapi.domain.User;
 import com.igor.springapi.services.UserService;
 
@@ -61,6 +62,13 @@ public class UserResources { // UserControllers
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET) // ou @Getmapping
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        List<Post> posts = obj.getPosts();
+        return ResponseEntity.ok().body(posts);
     }
 
 }
