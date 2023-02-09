@@ -2,10 +2,8 @@ package com.igor.springapi.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.igor.springapi.DTO.UserDTO;
@@ -23,10 +21,6 @@ public class UserService {
         return repo.findAll();
     }
 
-    /**
-     * @param id
-     * @return
-     */
     public User findById(String id) {
         Optional<User> user = repo.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
@@ -44,7 +38,6 @@ public class UserService {
     public User update(User obj) {
         Optional<User> newObjRepo = repo.findById(obj.getId());
         updateData(newObjRepo, obj);
-        System.out.println(newObjRepo.get().getName());
         return repo.save(fromOptional(newObjRepo));
     }
 
