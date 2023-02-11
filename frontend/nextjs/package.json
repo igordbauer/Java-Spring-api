@@ -17,13 +17,14 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@next/font": "latest",
+    "mongodb": "^5.0.1",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
-    "eslint": "latest",
+    "eslint": "^8.34.0",
     "eslint-config-next": "latest"
   }
 }

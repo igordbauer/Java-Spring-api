@@ -2,6 +2,7 @@ package com.igor.springapi.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ import com.igor.springapi.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class UserResources { // UserControllers
 
     @Autowired
